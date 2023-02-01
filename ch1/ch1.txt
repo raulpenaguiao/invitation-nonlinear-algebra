@@ -1,0 +1,21 @@
+
+
+ - Varieties are identified "up to projective equivalence"
+
+ 
+The variety given by det ({{1, x, y}, {x, 1, z}, {y, z, 1}}) = 0  will be a running example, it has four singular points (common roots with partial derivatives)
+
+
+Ideals have primary decomposition, for instance I = <y*z - x, x*y - z, x*z - y> = <x, y, z> \cap <x-1, y-1, z-1> \cap <x-1, y+1, z+1> \cap <x+1, y-1, z+1> \cap <x+1, y+1, z-1>
+This corresponds to decomposing the variety as the union of irreducible varieties
+Why is it call primary decomposition and not radical decomposition? Is there such a thing as a radical decomposition?
+
+We use the Hilbert series to define the dimension and degree of an ideal.
+If I is a monomial ideal, the definition is simple.
+Specifically, if h_I(q) is the number of monomials of degree q NOT belonging to I, then the Hilbert series sum h_I(q) t^q can be written as p(t)/(t - 1)^d, where p is a polynomial with p(0) = 1, with integer coefficients. We can write p(t) = (1-z)^a*q(t), for maximal a integer.
+dim I = n-a
+deg I = q(1)
+
+
+
+
