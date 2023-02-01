@@ -98,7 +98,46 @@ for i from 0 to r-1 do(
 
 
 -- Exercise 8
+-- Use Corollary 4.8, I = <f_1 - z1, f_2-z2 , .., f_6 - z6>
+restart
+R = QQ[x, y, z, z1, z2, z3, z4, z5, z6, Degrees => {3:1, 6:2}, MonomialOrder => Eliminate 3];
+I = ideal(x^2- z1,
+x*y - z2,
+x*z - z3,
+y^2 - z4,
+y*z - z5,
+z^2 - z6);
+IX = ideal(x^3 + y^3 + z^3);
+J = I+IX;
+g = groebnerBasis J;
+r = rank source g;
+L = new List from {};
+for i from 0 to r-1 do(
+    if ((not member(x, support g_(0, i))) and (not member(y, support g_(0, i))) and (not member(z, support g_(0, i)))) then L = append(L, g_(0, i))
+)
+K = ideal L;
+isPrime K -- true, as expected
+
+--Exercise 9
+restart
+R = QQ[x_1..x_9, y_1..y_9, Degrees => {9:1, 9:2}, MonomialOrder => Eliminate 9];
+M = genericMatrix(R, 3, 3);
+N = genericMatrix(R, y_1, 3, 3);
+I = ideal(M*M-N);
+IX = ideal(x_1+x_4+x_9);
+J = I+IX;
+g = groebnerBasis J;
+r = rank source g;
+
+--Exercise 10
 
 
+--Exercise 11
 
 
+--Exercise 12
+
+-- V_1 + V_2 is the image of V_1 x V_2 in (C^d)^2 -> C^d given by (x, y) -> (x+y)
+-- One can use corollary 4.8 to find the vanishing ideal of the Zarisky closure of the image of this variety over the map
+
+--Exercise 13
