@@ -126,10 +126,34 @@ N = genericMatrix(R, y_1, 3, 3);
 I = ideal(M*M-N);
 IX = ideal(x_1+x_4+x_9);
 J = I+IX;
-g = groebnerBasis J;
+g = groebnerBasis J; -- takes a bit to run
 r = rank source g;
 
+-- function that checks if polynomial p contains any of the variables in l
+c_var = (p, l)->(
+    k = length l;
+    ans = false;
+    for i from 0 to k-1 do(
+        if member(l_i, support p) then ans = true;
+    );
+    ans
+)
+
+L = new List from {};
+v = x_1..x_9;
+for i from 0 to r-1 do(
+    if not c_var(g_(0, i), v) then L = append(L, g_(0, i))
+)
+length L
+print toString L_0
+
 --Exercise 10
+restart
+R = QQ[x_1..x_18]
+M = genericMatrix(R, 3, 6)
+I = gens minors(3, M)
+mingens I
+-- Not completed 
 
 
 --Exercise 11
@@ -141,3 +165,43 @@ r = rank source g;
 -- One can use corollary 4.8 to find the vanishing ideal of the Zarisky closure of the image of this variety over the map
 
 --Exercise 13
+
+
+
+-- Exercise 14
+
+
+-- Exercise 15
+
+-- Exercise 16
+restart
+R = QQ[x_1, x_5, x_9, x_2, x_3, x_4, x_6, x_7, x_8, MonomialOrder=> Eliminate 3];
+M = matrix({{x_1, x_2, x_3}, {x_4, x_5, x_6}, {x_7, x_8, x_9}});
+I = minors(2, M);
+
+g = groebnerBasis I;
+r = rank source g;
+
+-- function that checks if polynomial p contains any of the variables in l
+c_var = (p, l)->(
+    k = length l;
+    ans = false;
+    for i from 0 to k-1 do(
+        if member(l_i, support p) then ans = true;
+    );
+    ans
+)
+
+L = new List from {};
+v = {x_1, x_5, x_9};
+for i from 0 to r-1 do(
+    if not c_var(g_(0, i), v) then L = append(L, g_(0, i))
+)
+length L
+print toString L_0 -- x_2*x_6*x_7 = x_3*x_4*x_8
+
+-- Exercise 17
+
+-- Exercise 18
+
+-- Exercise 19
